@@ -985,114 +985,117 @@ textarea.form-input::-webkit-resizer { display: none; }
   .project-img { height: auto; }
 }
 
-@media (min-width: 580px) {
-  :root {
-    --fs-1: 36px; /* Increased from 32px */
-    --fs-2: 28px; /* Increased from 24px */
-    --fs-3: 30px; /* Increased from 26px */
-    --fs-4: 20px; /* Increased from 18px */
-    --fs-5: 18px; /* Increased from 15px */
-    --fs-6: 16px; /* Increased from 15px */
-    --fs-7: 16px; /* Increased from 15px */
-    --fs-8: 14px; /* Increased from 12px */
-  }
-  .sidebar, article {
-    width: 520px;
-    margin-inline: auto;
-    padding: 30px;
-  }
-  .article-title {
-    font-weight: var(--fw-600);
-    padding-bottom: 15px;
-  }
-  .article-title::after {
-    width: 40px;
-    height: 5px;
-  }
-  .icon-box {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    font-size: 18px;
-  }
+/*-----------------------------------*\
+  #MOBILE-SPECIFIC ADJUSTMENTS
+\*-----------------------------------*/
+
+@media (max-width: 579px) {
+  /* Stack sidebar on top of main content */
   main {
-    margin-top: 60px;
-    margin-bottom: 100px;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
   }
+
   .sidebar {
-    max-height: 180px;
-    margin-bottom: 30px;
-    width: 350px; /* Wider sidebar */
+    position: relative;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 15px;
+    border-radius: 0; /* Remove rounded corners for a full-width top bar */
+    border: none; /* Remove border for cleaner look */
+    box-shadow: none; /* Remove shadow for a flatter top bar */
   }
-  .sidebar.active { max-height: 584px; }
-  .sidebar-info { gap: 25px; }
-  .avatar-box { border-radius: 30px; }
-  .avatar-box img { width: 120px; }
-  .info-content .name { margin-bottom: 15px; }
-  .info-content .title { padding: 5px 18px; }
-  .info_more-btn {
-    top: -30px;
-    right: -30px;
-    padding: 10px 15px;
-  }
-  .info_more-btn span {
-    display: block;
-    font-size: var(--fs-8);
-  }
-  .info_more-btn ion-icon { display: none; }
-  .separator { margin: 32px 0; }
-  .contacts-list { gap: 20px; }
-  .contact-info {
-    max-width: calc(100% - 64px);
-    width: calc(100% - 64px);
-  }
-  .navbar { border-radius: 20px 20px 0 0; }
-  .navbar-list { gap: 20px; }
-  .navbar-link { --fs-8: 14px; }
-  .about .article-title { margin-bottom: 20px; }
-  .about-text { margin-bottom: 40px; }
-  .service-item {
+
+  /* Ensure sidebar-info (avatar, name, designation) is visible */
+  .sidebar-info {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 18px;
-    padding: 30px;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px; /* Add spacing below avatar/name section */
   }
-  .service-icon-box {
-    margin-bottom: 0;
-    margin-top: 5px;
+
+  .avatar-box img {
+    width: 60px; /* Smaller avatar for mobile */
   }
-  .service-content-box { text-align: left; }
-  .clients-list {
-    gap: 50px;
-    margin: 0 -30px;
-    padding: 45px;
-    scroll-padding-inline: 45px;
+
+  .info-content .name {
+    font-size: var(--fs-3);
+    margin-bottom: 5px;
   }
-  .clients-item { min-width: calc(33.33% - 35px); }
-  .timeline-list { margin-left: 65px; }
-  .timeline-item:not(:last-child)::before { left: -40px; }
-  .timeline-item::after {
-    height: 8px;
-    width: 8px;
-    left: -43px;
+
+  .info-content .title {
+    font-size: var(--fs-8);
+    padding: 2px 8px;
   }
-  .skills-item:not(:last-child) { margin-bottom: 25px; }
-  .mapbox {
-    height: 380px;
-    border-radius: 18px;
+
+  /* Remove the expand button on mobile */
+  .info_more-btn {
+    display: none; /* Hide the expand button since all details are shown */
   }
-  .input-wrapper {
-    gap: 30px;
-    margin-bottom: 30px;
+
+  /* Always show sidebar-info_more (contacts and social links) */
+  .sidebar-info_more {
+    display: block; /* Ensure the section is rendered */
+    opacity: 1 !important; /* Override any conflicting styles */
+    visibility: visible !important; /* Override any conflicting styles */
+    margin-top: 15px; /* Add spacing above contacts */
   }
-  .form-input { padding: 16px 24px; }
-  textarea.form-input { margin-bottom: 30px; }
-  .form-btn {
-    --fs-5: 18px; /* Increased for larger screens */
-    padding: 18px 24px;
+
+  /* Ensure the sidebar itself doesn't hide content */
+  .sidebar {
+    max-height: none !important; /* Remove max-height restrictions */
+    overflow: visible !important; /* Ensure all content is visible */
   }
-  .form-btn ion-icon { font-size: 18px; }
+
+  /* Adjust contacts list for mobile */
+  .contacts-list {
+    gap: 12px; /* Reduce gap for compact layout */
+  }
+
+  .contact-item {
+    gap: 12px; /* Reduce gap between icon and text */
+  }
+
+  .contact-info {
+    max-width: calc(100% - 46px);
+    width: calc(100% - 46px);
+  }
+
+  .contact-title {
+    font-size: var(--fs-8);
+    margin-bottom: 2px;
+  }
+
+  .contact-info :is(.contact-link, time, address) {
+    font-size: var(--fs-7);
+  }
+
+  /* Adjust social list for mobile */
+  .social-list {
+    gap: 12px; /* Reduce gap for compact layout */
+    padding-left: 0; /* Align with the rest of the sidebar */
+    padding-bottom: 10px; /* Add spacing below social links */
+  }
+
+  .social-item .social-link {
+    font-size: 16px; /* Slightly smaller icons for mobile */
+  }
+
+  /* Adjust main-content to appear below sidebar */
+  .main-content {
+    width: 100%;
+    margin: 0;
+    padding: 15px;
+  }
+
+  /* Ensure navbar stays at the bottom */
+  .navbar {
+    width: 100%;
+    bottom: 0;
+    border-radius: 12px 12px 0 0;
+  }
 }
 
 @media (min-width: 768px) {
@@ -1214,7 +1217,7 @@ textarea.form-input::-webkit-resizer { display: none; }
     z-index: 1;
   }
   .sidebar-info { flex-direction: column; }
-  .avatar-box img { width: 150px; }
+  .avatar-box img { width: 200px; }
   .info-content .name {
     white-space: nowrap;
     text-align: center;
@@ -1242,3 +1245,4 @@ textarea.form-input::-webkit-resizer { display: none; }
   .social-list { justify-content: center; }
   .timeline-text { max-width: 700px; }
 }
+
