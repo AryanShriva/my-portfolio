@@ -14,7 +14,7 @@ if (sidebarBtn && sidebar) {
   sidebarBtn.addEventListener('click', () => elementToggleFunc(sidebar));
 }
 
-// Custom select variables (Portfolio filtering)
+// Custom select variables (Project filtering)
 const select = document.querySelector('[data-select]');
 const selectItems = document.querySelectorAll('[data-select-item]');
 const selectValue = document.querySelector('[data-select-value]');
@@ -35,7 +35,7 @@ selectItems.forEach(item => {
   });
 });
 
-// Filter function for Portfolio
+// Filter function for Prejects
 const filterItems = document.querySelectorAll('[data-filter-item]');
 const filterFunc = function (selectedValue) {
   filterItems.forEach(item => {
