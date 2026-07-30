@@ -552,16 +552,15 @@ main {
 
 /* clients */
 
-.clients { margin-bottom: 15px; }
+.clients { margin-bottom: 40px; }
 
 .clients-list {
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   gap: 15px;
   margin: 0 -15px;
   padding: 25px;
-  padding-bottom: 25px;
   overflow-x: auto;
   scroll-behavior: smooth;
   overscroll-behavior-inline: contain;
@@ -571,11 +570,19 @@ main {
 
 .clients-item {
   min-width: 50%;
+  height: 110px;
   scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .clients-item img {
   width: 100%;
+  height: 100%;
+  object-fit: contain;
   filter: grayscale(1);
   transition: var(--transition-1);
 }
